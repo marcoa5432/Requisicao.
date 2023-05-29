@@ -23,7 +23,7 @@
              <label for="descricao">descrição</label>
              <input type="text" id="descricao" name="descricao">
 
-             <input type="submit" value="Publicar">
+        <input type="submit" value="Publicar"  onclick="cadastrarUsuario(event)">
          </form>
      <section>
 
@@ -54,14 +54,15 @@
             console.log(erro);
         });
 
-        function cadastrarUsuari() {
+        function cadastrarUsuario(event) {
+            event.preventDefault();
             const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
             const titleValue = document.getElementById('titulo').value;
-            const descricaoValue = document.getElementById('descricao').value;
+            const descriptionValue = document.getElementById('descricao').value;
 
             const publicacao = {
-                title: 'Meu post',
-                body: 'Descrição do post',
+                title: titleValue,
+                body: descriptionValue,
                 userId: 1,
                 
             }
@@ -70,7 +71,6 @@
             .then(data => console.log(data))
             .catch(error => console.log(error))
         }
-        cadastrarUsuari();
      </script>
 
  </body>
